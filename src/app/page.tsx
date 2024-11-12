@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Header from "@/Components/header";
-import Footer from "@/Components/footer";
 import { ArrowRight, ChevronRight } from "lucide-react";
 
 const Page = () => {
@@ -15,7 +13,33 @@ const Page = () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <Header />
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-lg bg-black/30 px-8 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="w-36 md:w-52 h-auto hover:opacity-80 transition-opacity">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          <div className="flex items-center gap-8">
+            <button className="text-white/70 hover:text-white transition-colors hidden md:block">
+              Documentation
+            </button>
+            <button className="text-white/70 hover:text-white transition-colors hidden md:block">
+              About
+            </button>
+            <button className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-200"></div>
+              <div className="relative flex items-center gap-2 px-6 py-2 bg-black rounded-full border border-gray-400/40 text-white font-medium hover:scale-105 transition duration-200">
+                Launch App
+                <ChevronRight size={16} />
+              </div>
+            </button>
+          </div>
+        </div>
+      </nav>
 
       <main className="pt-24 md:pt-32 overflow-hidden">
         <section className="relative mb-20 md:mb-36">
@@ -139,8 +163,43 @@ const Page = () => {
           </div>
         </section>
       </main>
+      <footer className="border-t-[0.5px] border-white/20">
+        <div className="max-w-7xl mx-auto px-8 pt-10 pb-5">
+          <div className="flex items-center justify-between">
+            <div className="w-36 md:w-52 h-auto">
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
 
-      <Footer />
+            <div className="flex items-center gap-1 md:gap-6">
+              {[
+                { icon: "/twitter.png", href: "#" },
+                { icon: "/telegram.png", href: "#" },
+                { icon: "/discord.png", href: "#" },
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className="w-10 h-10 rounded-full bg-white/5 p-2 hover:bg-white/10 transition-colors"
+                >
+                  <img
+                    src={social.icon}
+                    alt=""
+                    className="w-full h-full object-contain"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 pt-5 border-t-[0.5px] border-white/40 text-gray-400 text-sm">
+            <p>© 2024 StarPortal.co All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
